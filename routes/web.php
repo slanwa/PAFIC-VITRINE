@@ -19,7 +19,12 @@ Route::get('/a-propos', function () {
 Route::get('/services', function () {
     return view('services');
 })->name('services');
-// Route::inertia('/', 'Welcome')->name('home');
+
+use App\Http\Controllers\ContactController;
+
+// Page de contact
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Route::prefix('{current_team}')
 //     ->middleware(['auth', 'verified', EnsureTeamMembership::class])

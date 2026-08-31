@@ -61,7 +61,8 @@
                 Actualités
             </a>
 
-            <a href="#">
+            <a href="{{ route('contact') }}"
+               class="{{ request()->routeIs('contact') ? 'active' : '' }}">
                 Contact
             </a>
 
