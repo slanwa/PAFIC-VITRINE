@@ -14,7 +14,6 @@ class ContactController extends Controller
 
     public function send(Request $request)
     {
-        
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -24,15 +23,21 @@ class ContactController extends Controller
         ]);
 
         try {
-            // Utiliser 'emails.contact' (le vrai template d'email)
-            Mail::send('emails.contact', $validated, function ($mail) use ($validated) {
+            $emailData = [
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'],
+                'subject' => $validated['subject'],
+                'body' => $validated['message'], // renamed here
+            ];
+
+            Mail::send('emails.contact', $emailData, function ($mail) use ($validated) {
                 $mail->to('moiseslanwa25@gmail.com')
-                     ->subject('Nouveau message de contact - ' . $validated['subject'])
-                     ->replyTo($validated['email'], $validated['name']);
+                    ->subject('Nouveau message de contact - ' . $validated['subject'])
+                    ->replyTo($validated['email'], $validated['name']);
             });
 
             return redirect()->route('contact')
-            
                 ->with('success', '✅ Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
 
         } catch (\Exception $e) {

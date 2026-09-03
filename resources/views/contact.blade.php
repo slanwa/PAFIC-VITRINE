@@ -27,6 +27,11 @@
     </div>
 
 </section>
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
 
 <section class="contact-section">
@@ -244,13 +249,13 @@
         <div class="map-container">
             <!-- Intégrez ici une carte Google Maps -->
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.000000000000!2d11.5000000000000!3d4.0000000000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDAnMDAuMCJOIDExwrAzMCcwMC4wIkU!5e0!3m2!1sfr!2scm!4v1700000000000" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6872.218903670423!2d11.447769898930998!3d3.9061915774602363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc94cd7a1bf13%3A0x33e0bd3a0d5d089c!2sPAFIC%20SARL!5e0!3m2!1sen!2scm!4v1788447559455!5m2!1sen!2scm" 
                 width="100%" 
                 height="400" 
                 style="border:0; border-radius: 12px;" 
                 allowfullscreen="" 
                 loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                referrerpolicy="strict-origin-when-cross-origin">
             </iframe>
         </div>
 

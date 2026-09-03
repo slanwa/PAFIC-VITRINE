@@ -139,7 +139,7 @@
 
         <div class="field">
             <span class="field-label">💬 Message</span>
-            <div class="message-content">{{ $message }}</div>
+            <div class="message-content">{{ $body }}</div>
         </div>
 
         <div class="footer">
